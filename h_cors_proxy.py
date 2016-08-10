@@ -32,9 +32,8 @@ def update(request):
         qs = urlparse.parse_qs(request.query_string)
         id = qs['id'][0]
         token = qs['token'][0]
-        user = qs['user'][0]
         data = request.body
-        print id, token, user, data
+        print id, token, data
         headers = {'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json;charset=utf-8' }
         r1 = requests.put('https://hypothes.is/api/annotations/' + id, headers=headers, data=data, verify=False)
         print r1.status_code
